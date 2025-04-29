@@ -1,14 +1,14 @@
-[webservers]
-%{ for server in webservers ~}
-${server.name} ansible_host=${server.external_ip} fqdn=${server.fqdn}
+[web]
+%{ for instance in webservers ~}
+${instance.name} ansible_host=${instance.external_ip}
 %{ endfor ~}
 
-[databases]
-%{ for db in databases ~}
-${db.name} ansible_host=${db.external_ip} fqdn=${db.fqdn}
+[db]
+%{ for instance in databases ~}
+${instance.name} ansible_host=${instance.external_ip}
 %{ endfor ~}
 
 [storage]
-%{ for stor in storage ~}
-${stor.name} ansible_host=${stor.external_ip} fqdn=${stor.fqdn}
+%{ for instance in storage ~}
+${instance.name} ansible_host=${instance.external_ip}
 %{ endfor ~}

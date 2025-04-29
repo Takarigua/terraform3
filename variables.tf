@@ -1,44 +1,44 @@
-###cloud vars
-#variable "token" {
-#  type        = string
-#  description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
-#}
-
-variable "cloud_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
+variable "web_count" {
+  description = "Количество веб-серверов"
+  type        = number
+  default     = 2
 }
 
-variable "folder_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
-}
-
-variable "default_zone" {
-  type        = string
-  default     = "ru-central1-a"
-  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
-}
-variable "default_cidr" {
-  type        = list(string)
-  default     = ["10.0.1.0/24"]
-  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+variable "db_count" {
+  description = "Количество серверов баз данных"
+  type        = number
+  default     = 2
 }
 
 variable "vpc_name" {
+  description = "Имя VPC"
   type        = string
   default     = "develop"
-  description = "VPC network&subnet name"
+}
+
+variable "default_zone" {
+  description = "Зона по умолчанию"
+  type        = string
+  default     = "ru-central1-a"
 }
 
 variable "ssh_key_path" {
+  description = "Путь к публичному SSH-ключу"
   type        = string
   default     = "~/.ssh/id_rsa.pub"
-  description = "Path to SSH public key"
 }
 
-variable "vm_web_image" {
+variable "cloud_id" {
+  description = "Yandex.Cloud cloud ID"
   type        = string
-  default     = "ubuntu-2204-lts"
-  description = "VM image family"
+}
+
+variable "folder_id" {
+  description = "Yandex.Cloud folder ID"
+  type        = string
+}
+
+variable "default_cidr" {
+  description = "CIDR блок подсети"
+  type        = list(string)
 }
