@@ -1,14 +1,15 @@
 resource "yandex_compute_disk" "storage_disks" {
-  count = 3
-  name  = "${var.vpc_name}-disk-${count.index + 1}"
-  size  = 1
-  zone  = var.default_zone
+  count = var.storage_disks_count
+
+  name = "${var.vpc_name}-disk-${count.index + 1}"
+  size = 1
+  zone = var.default_zone
 }
 
 resource "yandex_compute_instance" "storage" {
   name                       = "${var.vpc_name}-storage"
-  platform_id               = "standard-v1"
-  allow_stopping_for_update = true
+  platform_id                = "standard-v1"
+  allow_stopping_for_update  = true
 
   resources {
     cores  = 2

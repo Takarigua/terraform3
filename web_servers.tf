@@ -1,10 +1,11 @@
 resource "yandex_compute_instance" "web" {
-  count = var.web_count
-  name  = "web-${count.index + 1}"
+  for_each = var.web_servers
+
+  name = each.key
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = each.value.cores
+    memory = each.value.memory
   }
 
   boot_disk {
